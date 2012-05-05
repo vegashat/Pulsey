@@ -20,6 +20,10 @@ namespace Pulsey.Web.Controllers
 
         public ActionResult Index(int id)
         {
+            Group g = new Group() { Name = "Test Group" };
+
+            _groupRepository.Save(g);
+
             var group = _groupRepository.Get(id);
 
             return View();
