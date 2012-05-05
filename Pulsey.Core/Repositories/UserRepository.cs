@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pulsey.Core.Repositories
 {
-    class UserRepository
+    public class UserRepository
     {
+
     }
 }
