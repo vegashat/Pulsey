@@ -1,4 +1,4 @@
-﻿  using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,17 @@ namespace Pulsey.Core.Repositories
         
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupUser> UserGroups { get; set; }
         public DbSet<AffectedCounty> AffectedCounties { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<PulseyContext>(null);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
+   
+    
 }

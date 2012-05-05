@@ -17,10 +17,8 @@ namespace Pulsey.Core.Repositories
             {
                 connectionString = ConfigurationManager.ConnectionStrings["pulsey"].ConnectionString;
             }
-            else
-            {
-                Database.Connection.ConnectionString = connectionString;
-            }
+            
+            Database.Connection.ConnectionString = connectionString;
 
             _connectionString = connectionString;
         }
