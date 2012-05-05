@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Authenticate", "Home", new { }, FormMethod.Get, new { }))
+{
+  @Html.Hidden("returnUrl",Request.QueryString["ReturnUrl"]);
+  <input type="submit" value="Sign In With Google" class="btn btn-primary" />
+}
