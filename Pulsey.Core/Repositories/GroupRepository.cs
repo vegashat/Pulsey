@@ -23,5 +23,26 @@ namespace Pulsey.Core.Repositories
                 return context.Groups.FirstOrDefault(g => g.Id == groupId);
             }
         }
+
+        public Group Save(Group group)
+        {
+            using (var context = GetContext())
+            {
+                if (group.Id == 0)
+                {
+                    context.Entry<Group>(group).State = System.Data.EntityState.Added;
+                }
+                else
+                {
+                    context.Entry<Group>(group).State = System.Data.EntityState.Modified;
+                }
+
+                context.SaveChanges();
+
+                return group;
+            }
+
+        }
     }
 }
+  
