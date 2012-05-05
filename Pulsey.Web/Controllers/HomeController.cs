@@ -117,7 +117,7 @@ namespace Pulsey.Web.Controllers
                             }
                             Response.SetCookie(cookie);
 
-                            Response.Redirect(Request.QueryString["ReturnUrl"] ?? "/");
+                            Response.Redirect(returnUrl ?? "/");
 
 
                         }

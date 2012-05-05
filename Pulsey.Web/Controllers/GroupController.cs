@@ -8,6 +8,7 @@ using Pulsey.Core.Repositories;
 
 namespace Pulsey.Web.Controllers
 {
+    [Authorize]
     public class GroupController : Controller
     {
         public GroupRepository _groupRepository;
