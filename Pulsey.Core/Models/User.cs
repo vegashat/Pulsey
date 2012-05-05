@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Pulsey.Web.Models
+namespace Pulsey.Core.Models
 {
     public class User
     {
@@ -20,5 +20,6 @@ namespace Pulsey.Web.Models
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
+        public string County { get; set; }
     }
 }
