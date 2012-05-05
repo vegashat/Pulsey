@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,10 @@ namespace Pulsey.Core.Repositories
 {
     public class PulseyContext : BaseContext
     {
+        public PulseyContext(string connectionString = "") : base(connectionString)
+        {
+        }
+
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Event> Events { get; set; }
         
