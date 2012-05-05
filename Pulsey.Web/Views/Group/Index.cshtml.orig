@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Group Index</h2>
+=======
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Group Index</h2>
+>>>>>>> master
