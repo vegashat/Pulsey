@@ -18,7 +18,7 @@ namespace Pulsey.Core.Repositories
 
         public static PulseyContext GetContext()
         {
-            return new PulseyContext(_connectionString);
+            return new PulseyContext();
         }
     }
 }
