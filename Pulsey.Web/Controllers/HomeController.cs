@@ -101,14 +101,14 @@ namespace Pulsey.Web.Controllers
                                // }
                             //}
                             // Do something with the values here, like store them in your database for this user.
-                            //var userData = string.Format("{0};{1};{2}", user.UserId, user.UserName, user.Email);
+                            var userData = string.Format("{0};{1};{2}", 1, "Bradley", "bratleylower@gmail.com");
                             var ticket = new FormsAuthenticationTicket(
                                            2, // magic number used by FormsAuth
                                            response.ClaimedIdentifier, // username
                                            DateTime.Now,
                                            DateTime.Now.AddDays(30),
                                            true, // "remember me"
-                                           null);
+                                           userData);
 
                             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
                             if (ticket.IsPersistent)
@@ -117,7 +117,7 @@ namespace Pulsey.Web.Controllers
                             }
                             Response.SetCookie(cookie);
 
-                            Response.Redirect(returnUrl ?? "/");
+                          //  Response.Redirect(returnUrl ?? "/");
 
 
                         }
@@ -125,6 +125,7 @@ namespace Pulsey.Web.Controllers
 
                         if (!String.IsNullOrEmpty(returnUrl))
                         {
+
                             return Redirect(returnUrl);
                         }
                         else
