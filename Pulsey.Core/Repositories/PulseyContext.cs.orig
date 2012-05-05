@@ -8,9 +8,15 @@ using Pulsey.Core.Models;
 namespace Pulsey.Core.Repositories
 {
     public class PulseyContext : BaseContext
+<<<<<<< HEAD
     {
         public PulseyContext(string connectionString = "") : base(connectionString)
         {
+=======
+    {
+        public PulseyContext(string connectionString = "") : base(connectionString)
+        {
+>>>>>>> 04799a62a859f1ac18ae65f0189d485b7cbf54d4
         }
 
         public DbSet<EventType> EventTypes { get; set; }

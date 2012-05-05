@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Group Index</h2>
+=======
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Group Index</h2>
+>>>>>>> 04799a62a859f1ac18ae65f0189d485b7cbf54d4

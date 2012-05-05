@@ -84,7 +84,7 @@
     </assemblyBinding>
     <legacyHMACWarning enabled="0" />
   </runtime>
-<<<<<<< HEAD
+
   <entityFramework>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework">
       <parameters>
@@ -139,6 +139,6 @@
     <idn enabled="All" />
     <iriParsing enabled="true" />
   </uri>
-=======
->>>>>>> master
+
+
 </configuration>
