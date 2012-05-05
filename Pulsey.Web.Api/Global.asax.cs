@@ -24,6 +24,13 @@ namespace Pulsey.Web.Api
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapHttpRoute(
+            name: "UserApi",
+            routeTemplate: "api/{controller}/{action}",
+            defaults: new { }
+            );
+
+
+            routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

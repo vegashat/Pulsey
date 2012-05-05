@@ -9,6 +9,10 @@ namespace Pulsey.Core.Repositories
 {
     public class PulseyContext : BaseContext
     {
+        public PulseyContext(string connectionString = "") : base(connectionString)
+        {
+        }
+
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Event> Events { get; set; }
         
@@ -16,5 +20,15 @@ namespace Pulsey.Core.Repositories
         public DbSet<Group> Groups { get; set; }
         public DbSet<GroupUser> UserGroups { get; set; }
         public DbSet<AffectedCounty> AffectedCounties { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<PulseyContext>(null);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
+   
+    
 }

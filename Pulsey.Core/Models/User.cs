@@ -20,5 +20,7 @@ namespace Pulsey.Core.Models
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
+
+        public IEnumerable<GroupUser> Groups { get; set; }
     }
 }

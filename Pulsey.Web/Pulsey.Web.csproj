@@ -202,7 +202,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Viewmodels\" />
-    <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -212,6 +211,9 @@
       <Project>{c655533e-919e-4099-af29-a2e7d2664848}</Project>
       <Name>Pulsey.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Group\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -13,15 +13,23 @@ namespace Pulsey.Core.Repositories
         {
             using (var context = GetContext())
             {
-                return context.Users.FirstOrDefault(a => a.Id == userId);
+                return context.Users.Include("GroupUser").Include("Group").FirstOrDefault(a => a.Id == userId);
             }
         }
 
         public IEnumerable<GroupUser> GetUserGroups(int userId)
         {
-            using (var context = GetContext())
+            try
             {
-                return context.UserGroups.Include("Group").Where(a => a.UserId == userId).ToList();
+                using (var context = GetContext())
+                {
+                    return context.UserGroups.Include("Group").Where(a => a.UserId == userId).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                var mess = ex.Message;
+                return null;
             }
         }
     }
