@@ -6,6 +6,10 @@
 <configuration>
   <configSections>
     <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+<<<<<<< HEAD
+=======
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+>>>>>>> 02ba87a7e47e2a01d39794b7af6fe03a7972ccd9
   </configSections>
   <connectionStrings>
     <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-Pulsey.Web-201255122955;Integrated Security=true" providerName="System.Data.SqlClient" />
