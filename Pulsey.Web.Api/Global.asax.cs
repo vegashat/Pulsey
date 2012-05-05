@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
-using System.Web.Optimization;
+//using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Pulsey.Web.Api
@@ -43,7 +43,7 @@ namespace Pulsey.Web.Api
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            BundleTable.Bundles.RegisterTemplateBundles();
+            //BundleTable.Bundles.RegisterTemplateBundles();
         }
     }
 }
