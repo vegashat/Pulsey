@@ -1,6 +1,41 @@
-
+@model Pulsey.Web.Viewmodels.GroupViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Group Index</h2>
+@using (Html.BeginForm("save", "group", FormMethod.Post, new { @id = "form-save-group" }))
+{
+    @Html.HiddenFor(m => Model.Group.Id)
+    
+    @Html.LabelFor(m => Model.Group.Name)
+    @Html.TextBoxFor(m => Model.Group.Name)
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+<div id="group-user-list">
+    
+    @Html.Partial("_UserList", Model.UserList)
+
+</div>
+
+<div>
+
+    <input id="new-group-user" data-group-id="@Model.GroupId" value="" /> <button id="add-group-user" class="btn btn-success">Add</button>
+</div>
+
+@section javascript
+{
+
+    $(function()
+    {
+    $( "#new-group-user" ).autocomplete({
+			source: "@Url.Action("list","user")",
+			minLength: 2,
+			select: function( event, ui ) 
+            {
+                alert(ui.item.value);
+			}
+		});
+    }
+}

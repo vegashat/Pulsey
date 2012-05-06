@@ -9,6 +9,14 @@ namespace Pulsey.Core.Repositories
 {
     public class UserRepository : BaseRepository
     {
+        public ICollection<User> Get()
+        {
+            using (var context = GetContext())
+            {
+                return context.Users.ToList();
+            }
+        }
+
         public User GetUserInfo(int userId)
         {
             using (var context = GetContext())

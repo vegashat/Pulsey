@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Pulsey.Core.Models.GroupUser>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Is Admin</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var groupUser in Model)
+        {
+            <tr>
+                <td>
+                    @groupUser.User.FullName
+                </td>
+                <td>
+                    @groupUser.IsAdmin
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

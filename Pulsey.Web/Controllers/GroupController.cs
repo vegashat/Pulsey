@@ -35,7 +35,12 @@ namespace Pulsey.Web.Controllers
             return Json(null);
         }
 
+        public JsonResult GetGroupUsers(int groupId)
+        {
+            var groupUsers = _groupRepository.GetGroupUsers(groupId);
 
+            return Json(groupUsers);
+        }
 
     }
 }

@@ -14,6 +14,7 @@ namespace Pulsey.Core.Models
         public int GroupId { get; set; }
         public bool IsAdmin { get; set; }
 
+        public virtual User User { get; set; }
         public virtual Group Group { get; set; }
     }
 }

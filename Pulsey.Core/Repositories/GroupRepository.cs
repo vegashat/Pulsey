@@ -43,6 +43,14 @@ namespace Pulsey.Core.Repositories
             }
 
         }
+
+        public ICollection<GroupUser> GetGroupUsers(int groupId)
+        {
+            using (var context = GetContext())
+            {
+                return context.UserGroups.Where(ug => ug.GroupId == groupId).ToList();
+            }
+        }
     }
 }
   
