@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Pulsey.Core.Models;
 using Pulsey.Core.Repositories;
+using Pulsey.Web.Viewmodels;
 
 namespace Pulsey.Web.Controllers
 {
@@ -19,15 +20,14 @@ namespace Pulsey.Web.Controllers
         }
 
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int id = 0)
         {
-            Group g = new Group() { Name = "Test Group" };
-
-            _groupRepository.Save(g);
-
             var group = _groupRepository.Get(id);
+            var groupUsers = _groupRepository.GetGroupUsers(id);
 
-            return View();
+            var model = new GroupViewModel(group, groupUsers);
+
+            return View(model);
         }
 
         public JsonResult Save(Group group)

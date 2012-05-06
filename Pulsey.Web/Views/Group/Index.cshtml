@@ -12,24 +12,28 @@
 
     <input type="submit" value="Save" class="btn btn-primary" />
 }
+<div>
 
-<div id="group-user-list">
-    
-    @Html.Partial("_UserList", Model.UserList)
+    @if(Model.UserList != null && Model.UserList.Any())
+    {        
+        @Html.Partial("_UserList", Model.UserList)
+    }
 
 </div>
 
 <div>
 
-    <input id="new-group-user" data-group-id="@Model.GroupId" value="" /> <button id="add-group-user" class="btn btn-success">Add</button>
+    <input id="new-group-user" data-group-id="@Model.Group.Id" value="" /> <button id="add-group-user" class="btn btn-success">Add</button>
 </div>
 
 @section javascript
 {
+    <script type="text/javascript">
+
 
     $(function()
     {
-    $( "#new-group-user" ).autocomplete({
+        $( "#new-group-user" ).autocomplete({
 			source: "@Url.Action("list","user")",
 			minLength: 2,
 			select: function( event, ui ) 
@@ -37,5 +41,7 @@
                 alert(ui.item.value);
 			}
 		});
-    }
+    });
+
+    </script>
 }

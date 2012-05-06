@@ -4,16 +4,16 @@ namespace Pulsey.Core.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using Pulsey.Core.Repositories;
+using Pulsey.Core.Repositories;
 
     internal sealed class Configuration : DbMigrationsConfiguration<PulseyContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(PulseyContext context )
+        protected override void Seed(PulseyContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -12,6 +12,11 @@ namespace Pulsey.Web.Viewmodels
         {
             Group = group;
             UserList = userList;
+
+            if (Group == null)
+            {
+                Group = new Group();
+            }
         }
 
         public Group Group { get; set; }
