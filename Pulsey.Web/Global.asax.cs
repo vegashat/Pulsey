@@ -33,6 +33,12 @@ namespace Pulsey.Web
             );
 
             routes.MapRoute(
+                name: "SaveLocation",
+                url: "Home/SaveLocation",
+                defaults: new { controller = "Home", action = "SaveLocation", location = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
