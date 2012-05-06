@@ -23,7 +23,7 @@ namespace Pulsey.Core.Repositories
                 return context.Groups.FirstOrDefault(g => g.Id == groupId);
             }
         }
-
+          
         public Group Save(Group group)
         {
             using (var context = GetContext())

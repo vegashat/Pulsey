@@ -15,7 +15,7 @@ namespace Pulsey.Core.Repositories
         {
             if (string.IsNullOrEmpty(connectionString))
             {
-                connectionString = ConfigurationManager.ConnectionStrings["pulsey"].ConnectionString;
+                connectionString = ConfigurationManager.ConnectionStrings["Pulsey"].ConnectionString;
             }
             
             Database.Connection.ConnectionString = connectionString;
