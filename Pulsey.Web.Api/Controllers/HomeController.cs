@@ -106,7 +106,7 @@ namespace Pulsey.Web.Api.Controllers
                                            response.ClaimedIdentifier, // username
                                            DateTime.Now,
                                            DateTime.Now.AddDays(30),
-                                           true, // "remember me"
+                                           false, // "remember me"
                                            userData);
 
                             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
