@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
 }
 
+<link rel="stylesheet" type="text/css" href="~/Content/chosen.css" />
+
 @using (Html.BeginForm("save", "group", FormMethod.Post, new { @id = "form-save-group" }))
 {
     @Html.HiddenFor(m => Model.Group.Id)
@@ -12,36 +14,46 @@
 
     <input type="submit" value="Save" class="btn btn-primary" />
 }
-<div>
+<div id="current-users">
 
-    @if(Model.UserList != null && Model.UserList.Any())
+    @if(Model.CurrentUsers != null && Model.CurrentUsers.Any())
     {        
-        @Html.Partial("_UserList", Model.UserList)
+        @Html.Partial("_UserList", Model.CurrentUsers)
     }
 
 </div>
 
 <div>
-
-    <input id="new-group-user" data-group-id="@Model.Group.Id" value="" /> <button id="add-group-user" class="btn btn-success">Add</button>
+     @Html.DropDownList("UserId", Model.UserList, new { @id = "group-user" })
+     <button id="add-group-user" class="btn btn-success" data-group-id="@Model.Group.Id">Add</button>
 </div>
 
-@section javascript
-{
-    <script type="text/javascript">
+ @section javascript
+ {
+     <script type="text/javascript" src="~/Scripts/chosen.jquery.min.js"></script>
 
+     <script type="text/javascript">
 
-    $(function()
+    $(function ()
     {
-        $( "#new-group-user" ).autocomplete({
-			source: "@Url.Action("list","user")",
-			minLength: 2,
-			select: function( event, ui ) 
-            {
-                alert(ui.item.value);
-			}
-		});
+        $("#group-user").chosen();
     });
 
-    </script>
-}
+
+    $("#add-group-user").on("click", function()
+    {
+        var groupUser = {UserId : $("#group-user").val(), GroupId : $(this).data("group-id")};
+
+        $.ajax
+        ({
+            url: "/group/addgroupuser",
+            data : groupUser,
+            success : function(result)
+            {
+                $('#current-users').empty();
+                $('#current-users').append(result);
+            }
+        });
+    });
+     </script>
+ }

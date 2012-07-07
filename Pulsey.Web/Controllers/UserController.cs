@@ -25,7 +25,7 @@ namespace Pulsey.Web.Controllers
         {
             var users = _userRepository.Get();
 
-            return Json(users);
+            return Json(users, JsonRequestBehavior.AllowGet);
         }
     }
 }

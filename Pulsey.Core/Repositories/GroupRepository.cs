@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Pulsey.Core.Models;
+using System.Data.Entity;
 
 namespace Pulsey.Core.Repositories
 {
@@ -48,7 +49,24 @@ namespace Pulsey.Core.Repositories
         {
             using (var context = GetContext())
             {
-                return context.UserGroups.Where(ug => ug.GroupId == groupId).ToList();
+                return context.UserGroups
+                    .Include(g =>g.Group)
+                    .Include(g =>g.User)
+                    .Where(ug => ug.GroupId == groupId).ToList();
+            }
+
+            
+        }
+
+        public GroupUser SaveGroupUser(GroupUser groupUser)
+        {
+            using (var context = GetContext())
+            {
+                context.Entry<GroupUser>(groupUser).State = System.Data.EntityState.Added;
+                
+                context.SaveChanges();
+
+                return groupUser;
             }
         }
     }

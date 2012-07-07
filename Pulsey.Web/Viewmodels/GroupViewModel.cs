@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Pulsey.Core.Models;
 
 namespace Pulsey.Web.Viewmodels
 {
     public class GroupViewModel
     {
-        public GroupViewModel(Group group, ICollection<GroupUser> userList)
+        public GroupViewModel(Group group, ICollection<GroupUser> currentUsers, ICollection<User> allUsers)
         {
             Group = group;
-            UserList = userList;
+            CurrentUsers = currentUsers;
+            AllUsers = allUsers;
 
             if (Group == null)
             {
@@ -20,6 +22,26 @@ namespace Pulsey.Web.Viewmodels
         }
 
         public Group Group { get; set; }
-        public ICollection<GroupUser> UserList { get; set; }
+        public ICollection<GroupUser> CurrentUsers { get; set; }
+        public ICollection<User> AllUsers { get; set; }
+
+        ICollection<SelectListItem> _users = null;
+        public ICollection<SelectListItem> UserList
+        {
+            get
+            {
+                if (_users == null)
+                {
+                    _users = new List<SelectListItem>();
+
+                    foreach (var user in AllUsers)
+                    {
+                        _users.Add(new SelectListItem() { Text = user.FullName, Value = user.Id.ToString() });
+                    }
+                }
+
+                return _users;
+            }
+        }
     }
 }
