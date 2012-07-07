@@ -13,19 +13,21 @@ namespace Pulsey.Web.Controllers
     public class GroupController : Controller
     {
         public GroupRepository _groupRepository;
+        public UserRepository _userRepository;
 
         public GroupController()
         {
             _groupRepository = new GroupRepository();
+            _userRepository  = new UserRepository();
         }
-
 
         public ActionResult Index(int id = 0)
         {
             var group = _groupRepository.Get(id);
             var groupUsers = _groupRepository.GetGroupUsers(id);
+            var users = _userRepository.Get();
 
-            var model = new GroupViewModel(group, groupUsers);
+            var model = new GroupViewModel(group, groupUsers, users);
 
             return View(model);
         }
@@ -40,6 +42,20 @@ namespace Pulsey.Web.Controllers
             var groupUsers = _groupRepository.GetGroupUsers(groupId);
 
             return Json(groupUsers);
+        }
+
+        public ActionResult AddGroupUser(GroupUser groupUser)
+        {
+            groupUser = _groupRepository.SaveGroupUser(groupUser);
+
+            return RedirectToAction("GroupUsers", new { groupId = groupUser.GroupId });
+        }
+
+        public PartialViewResult GroupUsers(int groupId)
+        {
+            var groupUsers = _groupRepository.GetGroupUsers(groupId);
+
+            return PartialView("_UserList", groupUsers);
         }
 
     }
