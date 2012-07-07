@@ -27,5 +27,17 @@ namespace Pulsey.Web.Controllers
 
             return Json(users, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
     }
 }
