@@ -198,8 +198,8 @@
     </Compile>
     <Compile Include="Models\PulseyIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UserContext.cs" />
-    <Compile Include="SignalR\PulseyHub.cs" />
     <Compile Include="Viewmodels\GroupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +280,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Group\TestGetLocation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
