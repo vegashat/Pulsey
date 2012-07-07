@@ -70,5 +70,13 @@ namespace Pulsey.Web.Controllers
             return PartialView("_UserList", groupUsers);
         }
 
+
+        public ActionResult TestGetLocation()
+        {
+
+
+            return View();
+
+        }
     }
 }
