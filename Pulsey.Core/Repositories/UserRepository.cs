@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,33 @@ namespace Pulsey.Core.Repositories
                 var mess = ex.Message;
                 return null;
             }
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            using (var context = new PulseyContext())
+            {
+                return context.Users.FirstOrDefault(a => a.Email == email);
+            }
+        }
+
+        public bool InsertUserProfile(User objUser)
+        {
+            using (var context = new PulseyContext())
+            {
+                context.Users.Add(objUser);
+                context.SaveChanges();
+            }
+            return true;
+        }
+        public bool UpdateUserProfile(User objUser)
+        {
+            using (var context = new PulseyContext())
+            {
+                context.Entry<User>(objUser).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+            return true;
         }
     }
 }
