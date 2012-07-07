@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+<section id="group-list">
+
+    <table id="groups">
+        <thead>
+            <tr>
+                <th>Group Name</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Groups, visible: Groups().length > 0">
+            <tr>
+                <td data-bind="value:Name"></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</section>
+
+@section javascript
+{
+    <script type="text/javascript">
+
+        function GroupsViewModel()
+        {
+            var self = this;
+
+            self.Groups = ko.observableArray([]);
+            self.NewGroup = ko.observable();
+
+            self.addGroup = function()
+            {
+            
+            }
+
+            $.getJSON("@Url.Action("get","group")", funtion(allGroups))
+            {
+                self.Groups(ko.mapping.toJS(allGroups));
+            }
+        };
+
+        var groupModel = new GroupsViewModel();
+
+        ko.applyBindings(groupModel);
+
+    </script>
+}
