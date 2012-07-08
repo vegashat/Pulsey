@@ -11,6 +11,9 @@ namespace Pulsey.Core.Models
         public int Id { get; set; }
         public EventType Type { get; set; }
         public DateTime EffectiveDateTime { get; set; }
+        public DateTime? ExpiresDateTime { get; set; }
+        public string Sender { get; set; }
+        public string Areas { get; set; }
         public string Alias { get; set; }
         public string DefaultMessage { get; set; }
     }

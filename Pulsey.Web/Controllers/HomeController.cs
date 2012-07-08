@@ -101,7 +101,8 @@ namespace Pulsey.Web.Controllers
                                // }
                             //}
                             // Do something with the values here, like store them in your database for this user.
-                            var userData = string.Format("{0};{1};{2}", 1, "Bradley", "bratleylower@gmail.com");
+                            var userObj = (new Pulsey.Core.Repositories.UserRepository()).GetUserByEmail(sreg.Email);
+                            var userData = string.Format("{0};{1};{2}", userObj.Id, userObj.FullName, userObj.Email);
                             var ticket = new FormsAuthenticationTicket(
                                            2, // magic number used by FormsAuth
                                            response.ClaimedIdentifier, // username
