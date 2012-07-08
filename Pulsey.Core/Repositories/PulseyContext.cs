@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 
 using Pulsey.Core.Models;
 
@@ -21,6 +22,18 @@ namespace Pulsey.Core.Repositories
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new GroupUserMap());
+        }
+
+        public class GroupUserMap : EntityTypeConfiguration<GroupUser>
+        {
+            public GroupUserMap()
+            {
+                HasKey(g => g.UserId).Property(g => g.UserId).HasColumnOrder(0);
+                HasKey(g => g.GroupId).Property(g => g.GroupId).HasColumnName("GroupId").HasColumnOrder(1);
+
+            }
         }
     }
 }

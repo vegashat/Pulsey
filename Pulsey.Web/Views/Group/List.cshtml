@@ -4,7 +4,7 @@
 
 <section id="group-list">
 
-    <table id="groups">
+    <table id="group">
         <thead>
             <tr>
                 <th>Group Name</th>
@@ -18,22 +18,68 @@
 
     </table>
 
+    <a data-toggle="modal" href="#add-group-modal" class="btn">Add Group</a>
+
+
+
+</section>
+
+<section id="group-maintenance">
+    <div id="add-group-modal" class="modal hide">
+        <form id="add-group-form" class="form-vertical" data-bind="submit : addGroup">
+
+            <div class="modal-header">
+                <h3>Add Group</h3>
+            </div>
+            <div class="modal-body">
+
+                <input id="new-group-id" type="hidden" data-bind="value : newGroup().Id" />
+                
+                <label for="group-name">Group Name</label>
+                <input id="new-group-name" type="text" data-bind="value: newGroup().Name" />
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Add Group" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
 </section>
 
 @section javascript
 {
     <script type="text/javascript">
 
+       
+
         function GroupsViewModel()
         {
             var self = this;
 
             self.Groups = ko.observableArray([]);
-            self.NewGroup = ko.observable();
+            self.newGroup = ko.observable();
+            
+
+            self.addGroup = function ()
+            {
+                $.ajax(
+                {
+                    url: '@Url.Action("save","group")',
+                    type: 'post',
+                    data: ko.toJSON(self.newGroup),
+                    contentType: 'application/json',
+                    success: function (group) {
+                        self.Groups.push(ko.mapping.toJS(group));
+                        self.newGroup(null);  
+                    }
+
+
+                });
+            }
 
             $.getJSON('@Url.Action("get","group")', function(allGroups)
             {
-                self.Groups= ko.mapping.toJS(allGroups);
+                self.Grouaps(ko.mapping.toJS(allGroups));
             });
         };
 

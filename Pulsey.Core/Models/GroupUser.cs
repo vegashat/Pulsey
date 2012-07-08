@@ -9,10 +9,9 @@ namespace Pulsey.Core.Models
 {
     public class GroupUser
     {
-        [Key, Column(Order=0)]
         public int UserId { get; set; }
-        [Key, Column(Order = 1)]
         public int GroupId { get; set; }
+
         public bool IsAdmin { get; set; }
 
         public virtual User User { get; set; }
