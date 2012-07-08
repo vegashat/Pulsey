@@ -22,17 +22,17 @@ namespace Pulsey.Core.Repositories
         {
             using (var context = GetContext())
             {
-                return context.Users.Include("GroupUser").Include("Group").FirstOrDefault(a => a.Id == userId);
+                return context.Users.Include("Groups").FirstOrDefault(a => a.Id == userId);
             }
         }
 
-        public IEnumerable<GroupUser> GetUserGroups(int userId)
+        public IEnumerable<Group> GetUserGroups(int userId)
         {
             try
             {
                 using (var context = GetContext())
                 {
-                    return context.UserGroups.Include("Group").Where(a => a.UserId == userId).ToList();
+                    return context.Users.FirstOrDefault(u => u.Id == userId).Groups;
                 }
             }
             catch (Exception ex)

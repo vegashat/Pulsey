@@ -21,9 +21,9 @@ namespace Pulsey.Web.Api.Controllers
             return (new UserRepository()).GetUserInfo(userId);
         }
 
-        public IEnumerable<GroupUser> GetUserGroups(int userId)
-        {
-            return (new UserRepository()).GetUserGroups(userId);
-        }
+        //public IEnumerable<User> GetUserGroups(int userId)
+        //{
+        //    return (new UserRepository()).GetUserGroups(userId);
+        //}
     }
 }

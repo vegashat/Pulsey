@@ -9,7 +9,7 @@ namespace Pulsey.Web.Viewmodels
 {
     public class GroupViewModel
     {
-        public GroupViewModel(Group group, ICollection<GroupUser> currentUsers, ICollection<User> allUsers)
+        public GroupViewModel(Group group, ICollection<User> currentUsers, ICollection<User> allUsers)
         {
             Group = group;
             CurrentUsers = currentUsers;
@@ -22,7 +22,7 @@ namespace Pulsey.Web.Viewmodels
         }
 
         public Group Group { get; set; }
-        public ICollection<GroupUser> CurrentUsers { get; set; }
+        public ICollection<User> CurrentUsers { get; set; }
         public ICollection<User> AllUsers { get; set; }
 
         ICollection<SelectListItem> _users = null;

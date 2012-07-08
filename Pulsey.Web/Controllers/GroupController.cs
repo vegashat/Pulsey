@@ -57,12 +57,12 @@ namespace Pulsey.Web.Controllers
             return Json(groupUsers);
         }
 
-        public ActionResult AddGroupUser(GroupUser groupUser)
-        {
-            groupUser = _groupRepository.SaveGroupUser(groupUser);
+        //public ActionResult AddGroupUser(Group group, User user)
+        //{
+        //    groupUser = _groupRepository.SaveGroupUser(groupUser);
 
-            return RedirectToAction("GroupUsers", new { groupId = groupUser.GroupId });
-        }
+        //    return RedirectToAction("GroupUsers", new { groupId = groupUser.Group.Id });
+        //}
 
         public PartialViewResult GroupUsers(int groupId)
         {

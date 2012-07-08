@@ -45,30 +45,33 @@ namespace Pulsey.Core.Repositories
 
         }
 
-        public ICollection<GroupUser> GetGroupUsers(int groupId)
+        public ICollection<User> GetGroupUsers(int groupId)
         {
             using (var context = GetContext())
             {
-                return context.UserGroups
-                    .Include(g =>g.Group)
-                    .Include(g =>g.User)
-                    .Where(ug => ug.GroupId == groupId).ToList();
-            }
+                var group = context.Groups.FirstOrDefault(g => g.Id == groupId);
 
-            
+                if (group != null)
+                {
+                    return group.Members;
+                }
+
+                return null;
+
+            }
         }
 
-        public GroupUser SaveGroupUser(GroupUser groupUser)
-        {
-            using (var context = GetContext())
-            {
-                context.Entry<GroupUser>(groupUser).State = System.Data.EntityState.Added;
+        //public GroupUser SaveGroupUser(GroupUser groupUser)
+        //{
+        //    using (var context = GetContext())
+        //    {
+        //        context.Entry<GroupUser>(groupUser).State = System.Data.EntityState.Added;
                 
-                context.SaveChanges();
+        //        context.SaveChanges();
 
-                return groupUser;
-            }
-        }
+        //        return groupUser;
+        //    }
+        //}
     }
 }
   
