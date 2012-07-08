@@ -32,6 +32,7 @@ namespace Pulsey.Web.Controllers
             return View(model);
         }
 
+       
         public ActionResult List()
         {
             return View();
@@ -41,7 +42,7 @@ namespace Pulsey.Web.Controllers
         {
             var groups = _groupRepository.Get();
 
-            return Json(groups);
+            return Json(groups, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Save(Group group)

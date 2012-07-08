@@ -10,9 +10,9 @@
                 <th>Group Name</th>
             </tr>
         </thead>
-        <tbody data-bind="foreach: Groups, visible: Groups().length > 0">
+        <tbody data-bind="foreach: Groups">
             <tr>
-                <td data-bind="value:Name"></td>
+                <td><span data-bind="text:Name"></span></td>
             </tr>
         </tbody>
 
@@ -31,20 +31,17 @@
             self.Groups = ko.observableArray([]);
             self.NewGroup = ko.observable();
 
-            self.addGroup = function()
+            $.getJSON('@Url.Action("get","group")', function(allGroups)
             {
-            
-            }
-
-            $.getJSON("@Url.Action("get","group")", funtion(allGroups))
-            {
-                self.Groups(ko.mapping.toJS(allGroups));
-            }
+                self.Groups= ko.mapping.toJS(allGroups);
+            });
         };
 
-        var groupModel = new GroupsViewModel();
 
-        ko.applyBindings(groupModel);
+        $(function () {
+            var groupModel = new GroupsViewModel();
+            ko.applyBindings(groupModel);
+        });
 
     </script>
 }
